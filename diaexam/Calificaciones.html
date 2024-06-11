@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor de Calificaciones </title>
+    <p>Te dire la letra que te corresponde segun tu calificacion</p>
+    <script>
+        function convertirCalificacion() {
+            var calificacion = parseFloat(document.getElementById("inputCalificacion").value);
+
+            if (calificacion < 1 || calificacion > 20 || isNaN(calificacion)) {
+                alert("Estas pendejo dije del 1 al 20");
+                return;
+            }
+            var letras = ['A "Eres un pro mata Sakuras"', 'B "Eres medio pro"', 'C "Eres nivel medio"', 'D "Apenas puedes contigo mismo"', 'E "Vales pa´ pura vrg"'];
+            var rangos = [[20, 19], [18, 16], [15, 13], [12, 10], [9, 1]];
+            var letra = '';
+            for (var i = 0; i < rangos.length; i++) {
+                if (calificacion <= rangos[i][0] && calificacion >= rangos[i][1]) {
+                    letra = letras[i];
+                    break;
+                }
+            }
+            document.getElementById("resultado").innerText = "La calificación " + calificacion + " equivale a la letra " + letra;
+        }
+    </script>
+</head>
+<body>
+    <h1>Convertidor de Calificaciones</h1>
+    <p>Ingresa tu calificación Datos validos del 1 al 20:</p>
+    <input type="number" id="inputCalificacion" min="1" max="20">
+    <button onclick="convertirCalificacion()">Convertir</button>
+    <p id="resultado"></p>
+</body>
+</html>
