@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Octahedron</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Octahedron</h1>
+
+        <label for="octahedron-side">Side Length:</label>
+        <input type="number" id="octahedron-side" placeholder="Enter side length of the octahedron">
+        <button onclick="calculateOctahedron()">Calculate Octahedron</button>
+        <div class="result" id="octahedron-result"></div>
+    </div>
+
+    <script>
+        function calculateOctahedron() {
+            const side = parseFloat(document.getElementById('octahedron-side').value);
+            if (isNaN(side) || side <= 0) {
+                alert('Please enter a valid side length for the octahedron.');
+                return;
+            }
+
+            const perimeter = 12 * side; // Total length of all edges
+            const area = 2 * Math.sqrt(3) * side * side; // Surface area
+            const volume = (1 / 3) * Math.sqrt(2) * side * side * side; // Volume
+
+            document.getElementById('octahedron-result').innerHTML = 
+                `<p>Perimeter: ${perimeter.toFixed(2)}</p>
+                 <p>Surface Area: ${area.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

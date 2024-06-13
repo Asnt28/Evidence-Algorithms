@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Cone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Cone</h1>
+
+        <label for="cone-radius">Radius:</label>
+        <input type="number" id="cone-radius" placeholder="Enter radius of the base of the cone">
+        <label for="cone-height">Height:</label>
+        <input type="number" id="cone-height" placeholder="Enter height of the cone">
+        <button onclick="calculateCone()">Calculate Cone</button>
+        <div class="result" id="cone-result"></div>
+    </div>
+
+    <script>
+        function calculateCone() {
+            const radius = parseFloat(document.getElementById('cone-radius').value);
+            const height = parseFloat(document.getElementById('cone-height').value);
+            if (isNaN(radius) || radius <= 0 || isNaN(height) || height <= 0) {
+                alert('Please enter valid dimensions for the cone.');
+                return;
+            }
+
+            const circumference = 2 * Math.PI * radius; // Circumference of the base
+            const slantHeight = Math.sqrt(radius * radius + height * height);
+            const baseArea = Math.PI * radius * radius;
+            const lateralSurfaceArea = Math.PI * radius * slantHeight;
+            const surfaceArea = baseArea + lateralSurfaceArea;
+            const volume = (1 / 3) * baseArea * height;
+
+            document.getElementById('cone-result').innerHTML = 
+                `<p>Base Perimeter (Circumference): ${circumference.toFixed(2)}</p>
+                 <p>Surface Area: ${surfaceArea.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

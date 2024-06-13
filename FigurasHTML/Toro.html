@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Torus</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Torus</h1>
+
+        <label for="major-radius">Major Radius (R):</label>
+        <input type="number" id="major-radius" placeholder="Enter major radius (R)">
+        <label for="minor-radius">Minor Radius (r):</label>
+        <input type="number" id="minor-radius" placeholder="Enter minor radius (r)">
+        <button onclick="calculateTorus()">Calculate Torus</button>
+        <div class="result" id="torus-result"></div>
+    </div>
+
+    <script>
+        function calculateTorus() {
+            const R = parseFloat(document.getElementById('major-radius').value);
+            const r = parseFloat(document.getElementById('minor-radius').value);
+            if (isNaN(R) || R <= 0 || isNaN(r) || r <= 0) {
+                alert('Please enter valid radii for the torus.');
+                return;
+            }
+
+            const circumference = 2 * Math.PI * R; // Circumference of the central circle
+            const surfaceArea = 4 * Math.PI * Math.PI * R * r; // Surface area of the torus
+            const volume = 2 * Math.PI * Math.PI * R * r * r; // Volume of the torus
+
+            document.getElementById('torus-result').innerHTML = 
+                `<p>Circumference: ${circumference.toFixed(2)}</p>
+                 <p>Surface Area: ${surfaceArea.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

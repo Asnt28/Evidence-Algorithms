@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Ellipse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Ellipse</h1>
+
+        <label for="ellipse-a">Semi-major Axis (a):</label>
+        <input type="number" id="ellipse-a" placeholder="Enter semi-major axis length">
+        <label for="ellipse-b">Semi-minor Axis (b):</label>
+        <input type="number" id="ellipse-b" placeholder="Enter semi-minor axis length">
+        <label for="ellipse-height">Height (for volume calculation):</label>
+        <input type="number" id="ellipse-height" placeholder="Enter height">
+        <button onclick="calculateEllipse()">Calculate Ellipse</button>
+        <div class="result" id="ellipse-result"></div>
+    </div>
+
+    <script>
+        function calculateEllipse() {
+            const a = parseFloat(document.getElementById('ellipse-a').value);
+            const b = parseFloat(document.getElementById('ellipse-b').value);
+            const h = parseFloat(document.getElementById('ellipse-height').value);
+            if (isNaN(a) || a <= 0 || isNaN(b) || b <= 0 || isNaN(h) || h <= 0) {
+                alert('Please enter valid dimensions for the ellipse.');
+                return;
+            }
+
+            const perimeter = Math.PI * (3 * (a + b) - Math.sqrt((3 * a + b) * (a + 3 * b))); // Ramanujan's approximation
+            const area = Math.PI * a * b;
+            const volume = (4 / 3) * Math.PI * a * b * h; // Volume of an ellipsoid
+
+            document.getElementById('ellipse-result').innerHTML = 
+                `<p>Perimeter (Approximation): ${perimeter.toFixed(2)}</p>
+                 <p>Area: ${area.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

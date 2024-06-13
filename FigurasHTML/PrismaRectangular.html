@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Rectangular Prism</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Rectangular Prism</h1>
+
+        <label for="length">Length:</label>
+        <input type="number" id="length" placeholder="Enter length of the prism">
+        <label for="width">Width:</label>
+        <input type="number" id="width" placeholder="Enter width of the prism">
+        <label for="height">Height:</label>
+        <input type="number" id="height" placeholder="Enter height of the prism">
+        <button onclick="calculatePrism()">Calculate Prism</button>
+        <div class="result" id="prism-result"></div>
+    </div>
+
+    <script>
+        function calculatePrism() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const height = parseFloat(document.getElementById('height').value);
+            if (isNaN(length) || length <= 0 || isNaN(width) || width <= 0 || isNaN(height) || height <= 0) {
+                alert('Please enter valid dimensions for the rectangular prism.');
+                return;
+            }
+
+            const perimeter = 4 * (length + width + height);
+            const baseArea = length * width;
+            const lateralArea = 2 * height * (length + width);
+            const totalArea = 2 * baseArea + lateralArea;
+            const volume = length * width * height;
+
+            document.getElementById('prism-result').innerHTML = 
+                `<p>Perimeter: ${perimeter.toFixed(2)}</p>
+                 <p>Base Area: ${baseArea.toFixed(2)}</p>
+                 <p>Lateral Surface Area: ${lateralArea.toFixed(2)}</p>
+                 <p>Total Surface Area: ${totalArea.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

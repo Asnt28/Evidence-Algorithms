@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Pentagonal Prism</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Pentagonal Prism</h1>
+
+        <label for="side-length">Side Length:</label>
+        <input type="number" id="side-length" placeholder="Enter side length of the pentagon base">
+        <label for="prism-height">Height:</label>
+        <input type="number" id="prism-height" placeholder="Enter height of the prism">
+        <button onclick="calculatePrism()">Calculate Prism</button>
+        <div class="result" id="prism-result"></div>
+    </div>
+
+    <script>
+        function calculatePrism() {
+            const side = parseFloat(document.getElementById('side-length').value);
+            const height = parseFloat(document.getElementById('prism-height').value);
+            if (isNaN(side) || side <= 0 || isNaN(height) || height <= 0) {
+                alert('Please enter valid dimensions for the pentagonal prism.');
+                return;
+            }
+
+            const perimeter = 5 * side;
+            const baseArea = (5 / 4) * side * side * (1 / Math.tan(Math.PI / 5));
+            const lateralArea = perimeter * height;
+            const totalArea = 2 * baseArea + lateralArea;
+            const volume = baseArea * height;
+
+            document.getElementById('prism-result').innerHTML = 
+                `<p>Perimeter: ${perimeter.toFixed(2)}</p>
+                 <p>Base Area: ${baseArea.toFixed(2)}</p>
+                 <p>Lateral Surface Area: ${lateralArea.toFixed(2)}</p>
+                 <p>Total Surface Area: ${totalArea.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

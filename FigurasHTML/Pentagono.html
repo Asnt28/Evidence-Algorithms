@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Pentagon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Pentagon</h1>
+
+        <label for="pentagon-side">Side Length:</label>
+        <input type="number" id="pentagon-side" placeholder="Enter side length of the pentagon">
+        <button onclick="calculatePentagon()">Calculate Pentagon</button>
+        <div class="result" id="pentagon-result"></div>
+    </div>
+
+    <script>
+        function calculatePentagon() {
+            const side = parseFloat(document.getElementById('pentagon-side').value);
+            if (isNaN(side) || side <= 0) {
+                alert('Please enter a valid side length for the pentagon.');
+                return;
+            }
+
+            const perimeter = 5 * side;
+            const area = (5 / 4) * side * side * (1 / Math.tan(Math.PI / 5));
+            const volume = area * side; // Assuming height = side length for volume
+
+            document.getElementById('pentagon-result').innerHTML = 
+                `<p>Perimeter: ${perimeter.toFixed(2)}</p>
+                 <p>Area: ${area.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

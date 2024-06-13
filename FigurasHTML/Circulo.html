@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Circle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Circle</h1>
+
+        <label for="circle-radius">Radius:</label>
+        <input type="number" id="circle-radius" placeholder="Enter radius of the circle">
+        <button onclick="calculateCircle()">Calculate Circle</button>
+        <div class="result" id="circle-result"></div>
+    </div>
+
+    <script>
+        function calculateCircle() {
+            const radius = parseFloat(document.getElementById('circle-radius').value);
+            if (isNaN(radius) || radius <= 0) {
+                alert('Please enter a valid radius for the circle.');
+                return;
+            }
+
+            const circumference = 2 * Math.PI * radius;
+            const area = Math.PI * radius * radius;
+            const volume = area * radius; // Assuming height = radius for volume (volume of a cylinder)
+
+            document.getElementById('circle-result').innerHTML = 
+                `<p>Perimeter (Circumference): ${circumference.toFixed(2)}</p>
+                 <p>Area: ${area.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

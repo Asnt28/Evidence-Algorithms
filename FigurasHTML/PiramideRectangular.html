@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Rectangular Pyramid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Rectangular Pyramid</h1>
+
+        <label for="length">Length:</label>
+        <input type="number" id="length" placeholder="Enter length of the rectangular base">
+        <label for="width">Width:</label>
+        <input type="number" id="width" placeholder="Enter width of the rectangular base">
+        <label for="height">Height:</label>
+        <input type="number" id="height" placeholder="Enter height of the pyramid">
+        <button onclick="calculatePyramid()">Calculate Pyramid</button>
+        <div class="result" id="pyramid-result"></div>
+    </div>
+
+    <script>
+        function calculatePyramid() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            const height = parseFloat(document.getElementById('height').value);
+            if (isNaN(length) || length <= 0 || isNaN(width) || width <= 0 || isNaN(height) || height <= 0) {
+                alert('Please enter valid dimensions for the rectangular pyramid.');
+                return;
+            }
+
+            const perimeter = 2 * (length + width);
+            const baseArea = length * width;
+            const slantHeightA = Math.sqrt((width / 2) ** 2 + height ** 2);
+            const slantHeightB = Math.sqrt((length / 2) ** 2 + height ** 2);
+            const lateralArea = (length * slantHeightA + width * slantHeightB);
+            const totalArea = baseArea + lateralArea;
+            const volume = (1 / 3) * baseArea * height;
+
+            document.getElementById('pyramid-result').innerHTML = 
+                `<p>Perimeter: ${perimeter.toFixed(2)}</p>
+                 <p>Base Area: ${baseArea.toFixed(2)}</p>
+                 <p>Total Surface Area: ${totalArea.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

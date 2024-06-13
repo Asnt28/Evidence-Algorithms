@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Isosceles Triangle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Isosceles Triangle</h1>
+
+        <label for="side-a">Side a:</label>
+        <input type="number" id="side-a" placeholder="Enter length of the equal sides (a)">
+        <label for="base">Base (b):</label>
+        <input type="number" id="base" placeholder="Enter length of the base (b)">
+        <button onclick="calculateTriangle()">Calculate Triangle</button>
+        <div class="result" id="triangle-result"></div>
+    </div>
+
+    <script>
+        function calculateTriangle() {
+            const sideA = parseFloat(document.getElementById('side-a').value);
+            const base = parseFloat(document.getElementById('base').value);
+
+            if (isNaN(sideA) || sideA <= 0 || isNaN(base) || base <= 0) {
+                alert('Please enter valid dimensions for the isosceles triangle.');
+                return;
+            }
+
+            const perimeter = 2 * sideA + base;
+            const height = Math.sqrt(sideA * sideA - (base / 2) * (base / 2));
+            const area = (base * height) / 2;
+
+            document.getElementById('triangle-result').innerHTML = 
+                `<p>Perimeter: ${perimeter.toFixed(2)}</p>
+                 <p>Area: ${area.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Calculations - Equilateral Triangle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Geometric Calculations - Equilateral Triangle</h1>
+
+        <label for="side">Side Length:</label>
+        <input type="number" id="side" placeholder="Enter side length of the equilateral triangle">
+        <label for="prism-height">Prism Height (for volume calculation):</label>
+        <input type="number" id="prism-height" placeholder="Enter height of the prism">
+        <button onclick="calculateEquilateralTriangle()">Calculate Equilateral Triangle</button>
+        <div class="result" id="triangle-result"></div>
+    </div>
+
+    <script>
+        function calculateEquilateralTriangle() {
+            const side = parseFloat(document.getElementById('side').value);
+            const prismHeight = parseFloat(document.getElementById('prism-height').value);
+
+            if (isNaN(side) || side <= 0 || isNaN(prismHeight) || prismHeight <= 0) {
+                alert('Please enter valid dimensions for the equilateral triangle.');
+                return;
+            }
+
+            const perimeter = 3 * side;
+            const area = (Math.sqrt(3) / 4) * side * side;
+            const volume = area * prismHeight; // Assuming prism height for volume calculation
+
+            document.getElementById('triangle-result').innerHTML = 
+                `<p>Perimeter: ${perimeter.toFixed(2)}</p>
+                 <p>Area: ${area.toFixed(2)}</p>
+                 <p>Volume: ${volume.toFixed(2)}</p>`;
+        }
+    </script>
+</body>
+</html>
