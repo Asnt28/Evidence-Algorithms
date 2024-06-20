@@ -1,3 +1,6 @@
+
+#Dias que llevas de vida apartir de tu fecha de nacimiento 
+
 import texto.reordenar as reordenar
 while True:
     texto=input("Humano por favor ingresa un palindromo:")
