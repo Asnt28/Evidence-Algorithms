@@ -1,5 +1,5 @@
 
-#Dias que llevas de vida apartir de tu fecha de nacimiento 
+#Determina si una palabata es palindromo
 
 import texto.reordenar as reordenar
 while True:
